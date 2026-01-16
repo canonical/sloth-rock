@@ -1,0 +1,9 @@
+file:
+  /bin/sloth:
+    exists: true
+    mode: "0755"
+
+command:
+  sloth-help:
+    exec: "sloth --help"
+    exit-status: 0

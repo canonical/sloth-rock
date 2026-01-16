@@ -1,0 +1,41 @@
+name: sloth
+base: ubuntu@24.04
+version: "0.15.0"
+summary: Petrified sloth, a Prometheus SLO generator.
+description: |
+    Sloth is an easy and simple Prometheus SLO (service level objectives) generator. 
+    It generates understandable, uniform and reliable Prometheus SLOs for any kind of service 
+    using a simple SLO spec.
+platforms:
+    amd64:
+license: Apache-2.0
+
+# Sloth CLI can be used in two modes:
+# 1) As a long-running process inside a Kubernetes container.
+# 2) As a one-time invoker (e.g. `sloth generate`) to produce outputs such as Prometheus recording rules.
+
+# We keep `bin/sloth` in the rock so it can be reused in different contexts:
+# - Docker users can pass Pebble arguments to invoke Sloth as a one-time command.
+# - K8s manifests/charms can supply arguments such as `sloth kubernetes-controller` to run Sloth as a long-running process.
+services:
+  sloth:
+    command: bin/sloth
+    override: replace
+    startup: enabled
+    on-success: ignore
+parts:
+    sloth:
+        plugin: go
+        source: https://github.com/slok/sloth
+        source-type: git
+        source-tag: "v0.15.0"
+        source-depth: 1
+        build-snaps:
+        - go/1.25/stable
+        override-build: |
+            CGO_ENABLED=0 go build -o "${CRAFT_PART_INSTALL}/bin/sloth" --ldflags "-s -w -extldflags '-static' -X github.com/slok/sloth/internal/info.Version=${CRAFT_PROJECT_VERSION}" -buildvcs=false ./cmd/sloth
+        organize:
+            bin/sloth: bin/sloth
+    ca-certs:
+        plugin: nil
+        overlay-packages: [ca-certificates]
