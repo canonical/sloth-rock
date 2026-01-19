@@ -11,7 +11,7 @@ platforms:
 license: Apache-2.0
 
 # Sloth CLI can be used in two modes:
-# 1) As a long-running process inside a Kubernetes container.
+# 1) As a long-running process inside a K8s container.
 # 2) As a one-time invoker (e.g. `sloth generate`) to produce outputs such as Prometheus recording rules.
 
 # We keep `bin/sloth` in the rock so it can be reused in different contexts:
@@ -39,3 +39,11 @@ parts:
     ca-certs:
         plugin: nil
         overlay-packages: [ca-certificates]
+    # this will only have effect on the ca-certificates package
+    # since sloth is built from source
+    deb-security-manifest:
+        plugin: make
+        source: https://github.com/canonical/rocks-security-manifest
+        source-type: git
+        source-branch: main
+        override-prime: gen_manifest
