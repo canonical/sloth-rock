@@ -42,6 +42,9 @@ parts:
     # this will only have effect on the ca-certificates package
     # since sloth is built from source
     deb-security-manifest:
+        after:
+        - sloth
+        - ca-certs
         plugin: make
         source: https://github.com/canonical/rocks-security-manifest
         source-type: git
