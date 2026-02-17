@@ -31,7 +31,7 @@ parts:
         source-tag: "v0.15.0"
         source-depth: 1
         build-snaps:
-        - go/1.25/stable
+        - go/1.25/candidate
         override-build: |
             CGO_ENABLED=0 go build -o "${CRAFT_PART_INSTALL}/bin/sloth" --ldflags "-s -w -extldflags '-static' -X github.com/slok/sloth/internal/info.Version=${CRAFT_PROJECT_VERSION}" -buildvcs=false ./cmd/sloth
         organize:
