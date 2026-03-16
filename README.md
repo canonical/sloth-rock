@@ -1,8 +1,8 @@
 # sloth-rock
 
-[![Open a PR to OCI Factory](https://github.com/canonical/sloth-rock/actions/workflows/rock-release-oci-factory.yaml/badge.svg)](https://github.com/canonical/sloth-rock/actions/workflows/rock-release-oci-factory.yaml)
-[![Publish to GHCR:dev](https://github.com/canonical/sloth-rock/actions/workflows/rock-release-dev.yaml/badge.svg)](https://github.com/canonical/sloth-rock/actions/workflows/rock-release-dev.yaml)
-[![Update Rock](https://github.com/canonical/sloth-rock/actions/workflows/rock-update.yaml/badge.svg)](https://github.com/canonical/sloth-rock/actions/workflows/rock-update.yaml)
+[![Open a PR to OCI Factory](https://github.com/canonical/sloth-rock/actions/workflows/release-oci-factory.yaml/badge.svg)](https://github.com/canonical/sloth-rock/actions/workflows/release-oci-factory.yaml)
+[![Publish to GHCR:dev](https://github.com/canonical/sloth-rock/actions/workflows/release-dev.yaml/badge.svg)](https://github.com/canonical/sloth-rock/actions/workflows/release-dev.yaml)
+[![Update Rock](https://github.com/canonical/sloth-rock/actions/workflows/update.yaml/badge.svg)](https://github.com/canonical/sloth-rock/actions/workflows/update.yaml)
 
 [Rocks](https://canonical-rockcraft.readthedocs-hosted.com/en/latest/) for [Sloth](https://github.com/slok/sloth).  
 This repository holds all the necessary files to build rocks for the upstream versions we support.
