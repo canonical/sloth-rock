@@ -2,6 +2,8 @@ set allow-duplicate-recipes
 set allow-duplicate-variables
 import? 'rocks.just'
 
+source_repo := 'slok/sloth'
+
 [private]
 @default:
   just --list
